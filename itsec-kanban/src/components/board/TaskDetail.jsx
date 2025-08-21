@@ -48,7 +48,7 @@ const TaskDetail = () => {
                                 </Label>
                             ))}
                         </div>
-                        <div className="text-[14px] font-semibold">Status: {task.label}</div>
+                        <div className="text-[14px] font-semibold">Status: <span className="uppercase">{task.label}</span></div>
                     </div>
                 </div>
                 <div className="my-8 flex justify-end gap-2 items-center">

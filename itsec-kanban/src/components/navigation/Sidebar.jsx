@@ -21,6 +21,7 @@ const Sidebar = () => {
 
     const handleLogout = (e) => {
         e.preventDefault();
+        localStorage.removeItem('isLoggedIn');
         navigate('/login');
     };
 

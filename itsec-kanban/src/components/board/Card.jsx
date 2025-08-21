@@ -44,7 +44,7 @@ const Card = ({ id, title, description, label, status, assignees = [], attachmen
                                     onClick={e => e.stopPropagation()}
                                 >
                                     <Icon name={file.name} src={file.type === 'link' ? linkIcon : imageIcon} size={14} className="inline-block mr-1" />
-                                    {file.name}
+                                    {truncateText(file.name, 15)}
                                 </a>
                             </li>
                         ))}

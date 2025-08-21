@@ -18,6 +18,8 @@ const LoginForm = () => {
             return;
         }
         setError('');
+        localStorage.setItem('username', username);
+        localStorage.setItem('isLoggedIn', 'true');
         navigate('/board');
     };
 
