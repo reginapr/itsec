@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import iconEye from '../../assets/icons/eye.png';
 import PrimaryBtn from '../ui/Button';
+import Icon from "../ui/Icon";
+import eyeIcon from '../../assets/icons/eye-icon.svg';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -21,7 +22,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="mt-[74px] space-y-[60px] text-lg max-w-[430px] w-full">
       <div>
         <input
           type="text"
@@ -46,15 +47,11 @@ const LoginForm = () => {
           tabIndex={-1}
           aria-label={showPassword ? "Hide password" : "Show password"}
         >
-          <img
-            src={iconEye}
-            alt={showPassword ? "Hide password" : "Show password"}
-            className={`w-5 h-5 ${showPassword ? 'opacity-50 grayscale' : ''}`}
-          />
+          <Icon name="close" src={eyeIcon} size={34} className={`${showPassword ? 'opacity-50 grayscale' : ''}`} />
         </button>
       </div>
       {error && <div className="text-red-500">{error}</div>}
-      <PrimaryBtn type="submit">Login</PrimaryBtn>
+      <PrimaryBtn type="submit" className="bg-[#4186F4] w-full font-semibold text-xl" padding="py-3">Login</PrimaryBtn>
     </form>
   );
 };

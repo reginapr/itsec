@@ -1,7 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -80,9 +76,13 @@ itsec-kanban/
 │   │   ├── ui/              # Small UI primitives (buttons, modals, etc.)
 │   │   │   ├── Button.jsx
 │   │   │   ├── Modal.jsx
-│   │   │   └── Input.jsx
 │   │   │
 │   │   ├── board/           # Kanban board-specific components
+│   │   │   ├── Column.jsx
+│   │   │   └── Card.jsx
+│   │   │   └── TaskDetail.jsx
+│   │   │
+│   │   ├── modal/           # Kanban board-specific components
 │   │   │   ├── Column.jsx
 │   │   │   └── Card.jsx
 │   │   │
@@ -96,14 +96,14 @@ itsec-kanban/
 │   ├── hooks/               # Custom React hooks
 │   │   └── useDragAndDrop.js
 │   │
-│   ├── context/             # Context API (global state management)
-│   │   └── BoardContext.jsx
+│   ├── store/             # State Management
+│   │   └── taskStore.jsx
 │   │
 │   ├── services/            # API calls, Firebase, or localStorage helpers
 │   │   └── boardService.js
 │   │
 │   ├── utils/               # Utility functions
-│   │   └── helpers.js
+│   │   └── formatDateTime.js
 │   │
 │   ├── styles/              # Tailwind or custom CSS
 │   │   ├── index.css

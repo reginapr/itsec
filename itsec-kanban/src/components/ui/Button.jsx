@@ -1,11 +1,11 @@
-const Button = ({ type = "button", className = "", children, ...props }) => (
+const Button = ({ type = "button", className = "", text = "text-white", padding = "py-2", children, ...props }) => (
   <button
     type={type}
-    className={`w-full py-2 bg-[#4186F4] text-white rounded hover:opacity-90 transition duration-300 ${className}`}
+    className={`rounded hover:opacity-90 transition duration-300 ${className} ${text} ${padding}`}
     {...props}
   >
     {children}
   </button>
 );
 
-export default Button;
+export default Button;  

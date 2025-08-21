@@ -14,8 +14,8 @@ const LoginPage = () => {
     
             {/* Right Column - Login form */}
             <div className="w-full lg:w-1/2 flex items-center justify-center bg-white p-8">
-                <div className="max-w-md w-full space-y-6">
-                    <h1 className="text-2xl font-bold">Login</h1>
+                <div className="max-w-md w-full">
+                    <h1 className="text-3xl font-bold">Login</h1>
                     <LoginForm />
                 </div>
             </div>
