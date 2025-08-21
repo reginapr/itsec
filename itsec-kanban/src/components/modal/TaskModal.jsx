@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Button from '../ui/Button';
 import Icon from "../ui/Icon";
 import closeIcon from "../../assets/icons/close-icon.svg";
-import { useTaskStore } from '../../store/TaskStore';
 import { formatDateTime } from '../../utils/formatDateTime';
+import { useTaskStore } from '../../store/TaskStore';
 
 const assigneesList = [
     { type: "design", text: "Design" },
@@ -22,7 +22,7 @@ const TaskModal = ({
     onClose,
     taskActionModalName,
     mode = "add",
-    task // pass the task object when editing
+    task
 }) => {
     const { addTask, updateTask } = useTaskStore();
     const [taskName, setTaskName] = useState('');

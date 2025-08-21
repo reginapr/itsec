@@ -7,7 +7,9 @@ const typeClasses = {
 const baseClasses =
     "py-1 px-2 mr-2 rounded-md text-[13px] font-semibold";
 
-export const Label = ({ type, children }) => {
+const Label = ({ type, children }) => {
     const classes = `${baseClasses} ${typeClasses[type] || ""}`;
     return <span className={classes}>{children}</span>;
 };
+
+export default Label;

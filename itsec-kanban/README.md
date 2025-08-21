@@ -99,19 +99,19 @@ itsec-kanban/
 │   ├── store/             # State Management
 │   │   └── taskStore.jsx
 │   │
-│   ├── services/            # API calls, Firebase, or localStorage helpers
+│   ├── services/            # API calls
 │   │   └── boardService.js
 │   │
 │   ├── utils/               # Utility functions
 │   │   └── formatDateTime.js
+│   │   └── truncateText.js
 │   │
 │   ├── styles/              # Tailwind or custom CSS
 │   │   ├── index.css
 │   │   └── tailwind.css
 │   │
 │   ├── App.jsx              # Root component
-│   ├── main.jsx             # Entry point (Vite) or index.js (CRA)
-│   └── routes.jsx           # React Router setup
+│   └── index.jsx           
 │
 ├── tailwind.config.js       # Tailwind config
 ├── postcss.config.js

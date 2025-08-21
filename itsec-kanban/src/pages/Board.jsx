@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { useTaskStore } from '../store/TaskStore';
 import Column from '../components/board/Column';
 import TaskDetail from '../components/board/TaskDetail';
 import Sidebar from "../components/navigation/Sidebar";
 import PrimaryBtn from '../components/ui/Button';
 import TaskModal from '../components/modal/TaskModal';
 import ConfirmationBubble from "../components/modal/ConfirmationBubble";
+import { useTaskStore } from '../store/TaskStore';
 
 // Dummy user name
 const userName = "Reggie";
@@ -17,7 +17,7 @@ const initTasks = [
     title: 'Design User Interface',
     status: 'todo',
     label: 'TO DO',
-    description: 'It is a long established fact that a reader will be distracted by the readable content of a... ',
+    description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using filler text is that it has a more-or-less normal distribution of letters, as opposed to using repeated or meaningless words. This makes it look like natural language, which allows designers and developers to focus on the structure, typography, and visual balance of the page rather than the content itself.',
     assignees: [{ type: "design", text: "Design" }]
   },
   { id: 2,
@@ -73,7 +73,7 @@ const Board = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const location = useLocation();
-    const { tasks, setTasks } = useTaskStore();
+    const { tasks, setTasks, moveTask } = useTaskStore();
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const [showDeletedConfirmation, setShowDeletedConfirmation] = useState(false);
 
@@ -92,7 +92,12 @@ const Board = () => {
     const openTaskModal = () => setIsModalOpen(true);
 
     // Find the selected task from the store
-    const selectedTask = tasks.find(t => String(t.id) === id);
+    // const selectedTask = tasks.find(t => String(t.id) === id);
+
+    const handleCardDrop = (fromId, toStatus, toLabel) => {
+        console.log(fromId);
+        moveTask(fromId, toStatus, toLabel);
+    };
 
     return (
         <div className="flex h-screen font-sans">
@@ -108,7 +113,7 @@ const Board = () => {
 
                 {!id ? (
                     <div className="dashboard max-w-[1100px] mx-auto w-full">
-                        <div className="flex items-center justify-between pt-6 pb-4">
+                        <div className="flex items-center justify-between py-8">
                             <div className="text-2xl font-semibold">
                                 Hello, {userName}, here's your tasks
                             </div>
@@ -116,20 +121,20 @@ const Board = () => {
                         </div>
 
                         {/* Columns */}
-                        <div className="flex flex-1 gap-6">
+                        <div className="flex flex-1 gap-8">
                             {columns.map(col => (
                                 <Column
                                     key={col.key}
                                     col={col}
                                     tasks={tasks.filter(t => t.status === col.key)}
                                     onCardClick={taskId => navigate(`/board/${taskId}`)}
+                                    onCardDrop={handleCardDrop}
                                 />
                             ))}
                         </div>
                     </div>
                 ) : (
                     <TaskDetail
-                        {...selectedTask}
                         onClose={() => navigate('/board')}
                     />
                 )}

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Icon = ({ src, alt = 'icon', size = 24, style = {}, ...props }) => (
     <img
         src={src}

@@ -17,6 +17,14 @@ export const useTaskStore = create(
                         task.id === updatedTask.id ? updatedTask : task
                     ),
                 })),
+            moveTask: (taskId, newStatus, newLabel) =>
+                set((state) => ({
+                    tasks: state.tasks.map((task) =>
+                        task.id === Number(taskId)
+                            ? { ...task, status: newStatus, label: newLabel }
+                            : task
+                    ),
+                })),
         }),
         {
             name: 'task-storage',

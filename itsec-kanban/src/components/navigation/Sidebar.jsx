@@ -31,7 +31,7 @@ const Sidebar = () => {
             {/* Logo */}
             <div className="mb-10 font-bold text-lg">
                 <div className="bg-[#2CBA7A] rounded-[8px] text-[#02532F] flex items-center justify-center" style={{ fontSize: 20, width: 40, height: 40 }}>
-                        C
+                    C
                 </div>
             </div>
             {/* Navigation */}
@@ -47,7 +47,7 @@ const Sidebar = () => {
                     ))}
                 </ul>
             </nav>
-            {/* Logout at bottom */}
+            
             <div className="w-full mb-2">
                <button
                     type="button"
