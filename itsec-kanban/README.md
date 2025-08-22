@@ -2,6 +2,20 @@
 
 A simple Kanban board built with React, Tailwind CSS, and React Router.
 
+## Live Demo
+
+https://itsec-puce.vercel.app/login
+
+
+## Author
+
+Regina Prisciia Rombang
+
+## Tech Stack
+
+Frontend: React, TailwindCSS
+Deployment: Vercel
+
 ## Available Scripts
 
 In the project directory, you can run:
