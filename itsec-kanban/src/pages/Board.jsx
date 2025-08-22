@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useTaskStore } from '../store/TaskStore';
+import { fetchTasks } from '../services/boardService';
 import Column from '../components/board/Column';
 import TaskDetail from '../components/board/TaskDetail';
 import Sidebar from "../components/navigation/Sidebar";
 import PrimaryBtn from '../components/ui/Button';
 import TaskModal from '../components/modal/TaskModal';
 import ConfirmationBubble from "../components/modal/ConfirmationBubble";
-import { useTaskStore } from '../store/TaskStore';
-import { fetchTasks } from '../services/boardService';
 
 // Dummy tasks
 // const initTasks = [
@@ -77,21 +77,26 @@ const Board = () => {
     const [showMoveSuccess, setShowMoveSuccess] = useState(false);
     const [movedCardTitle, setMovedCardTitle] = useState('');
     const [userName, setUserName] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         const storage = localStorage.getItem('task-storage');
 
         if (storage) {
             const parsed = JSON.parse(storage);
             const storedTasks = parsed?.state?.tasks || [];
             setTasks(storedTasks);
+            setTimeout(() => setLoading(false), 1000);
         } else {
             fetchTasks()
                 .then(data => {
                     setTasks(data.tasks || data);
+                    setTimeout(() => setLoading(false), 1000);
                 })
                 .catch(err => {
                     console.error(err);
+                    setLoading(false);
                 });
         }
     }, [setTasks]);
@@ -145,16 +150,19 @@ const Board = () => {
                         </div>
 
                         {/* Columns */}
-                        <div className="flex flex-1 gap-8 transition-all duration-1000 ease-in-out">
-                            {columns.map(col => (
-                                <Column
-                                    key={col.key}
-                                    col={col}
-                                    tasks={tasks.filter(t => t.status === col.key)}
-                                    onCardClick={taskId => navigate(`/board/${taskId}`)}
-                                    onCardDrop={handleCardDrop}
-                                />
-                            ))}
+                        <div className="flex flex-1 gap-8 transition-all duration-1000 ease-in-out h-full">
+                            {columns.map(col =>
+                                (
+                                    <Column
+                                        key={col.key}
+                                        col={col}
+                                        tasks={tasks.filter(t => t.status === col.key)}
+                                        onCardClick={taskId => navigate(`/board/${taskId}`)}
+                                        onCardDrop={handleCardDrop}
+                                        loading={loading}
+                                    />
+                                )
+                            )}
                         </div>
                     </div>
                 ) : (

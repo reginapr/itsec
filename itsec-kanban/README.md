@@ -1,3 +1,7 @@
+## React Kanban Board
+
+A simple Kanban board built with React, Tailwind CSS, and React Router.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -66,16 +70,22 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
+
+
 itsec-kanban/
 ├── public/                  # Static files (favicon, index.html, etc.)
 ├── src/
 │   ├── assets/              # Images, icons, fonts, etc.
-│   │   └── logo.svg
+│   │   ├── icons/
+│   │   └── images/      # Sidebar
+│   │       
 │   │
 │   ├── components/          # Reusable UI components
 │   │   ├── ui/              # Small UI primitives (buttons, modals, etc.)
 │   │   │   ├── Button.jsx
-│   │   │   ├── Modal.jsx
+│   │   │   ├── Icon.jsx
+│   │   │   ├── Label.jsx
+│   │   │   └── LoadingIndicator.jsx
 │   │   │
 │   │   ├── board/           # Kanban board-specific components
 │   │   │   ├── Column.jsx
