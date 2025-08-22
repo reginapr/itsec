@@ -98,7 +98,7 @@ const TaskModal = ({
     });
 
     return (
-        <div>
+        <>
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
                     <div className="relative bg-white rounded shadow-lg w-full max-w-[500px]">
@@ -187,7 +187,7 @@ const TaskModal = ({
                     </div>
                 </div>)
             }
-        </div>
+        </>
     );
 };
 

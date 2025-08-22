@@ -74,6 +74,8 @@ const Board = () => {
     const { tasks, setTasks, moveTask } = useTaskStore();
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const [showDeletedConfirmation, setShowDeletedConfirmation] = useState(false);
+    const [showMoveSuccess, setShowMoveSuccess] = useState(false);
+    const [movedCardTitle, setMovedCardTitle] = useState('');
     const [userName, setUserName] = useState('');
 
     useEffect(() => {
@@ -114,7 +116,11 @@ const Board = () => {
     const openTaskModal = () => setIsModalOpen(true);
 
     const handleCardDrop = (fromId, toStatus, toLabel) => {
+        const movedTask = tasks.find(t => String(t.id) === String(fromId));
         moveTask(fromId, toStatus, toLabel);
+        setMovedCardTitle(movedTask ? movedTask.title : '');
+        setShowMoveSuccess(true);
+        setTimeout(() => setShowMoveSuccess(false), 3000);
     };
 
     return (
@@ -139,7 +145,7 @@ const Board = () => {
                         </div>
 
                         {/* Columns */}
-                        <div className="flex flex-1 gap-8">
+                        <div className="flex flex-1 gap-8 transition-all duration-1000 ease-in-out">
                             {columns.map(col => (
                                 <Column
                                     key={col.key}
@@ -163,6 +169,13 @@ const Board = () => {
                 taskActionModalName="Edit a Task"
                 mode="add"
             />
+            {showMoveSuccess && (
+                <ConfirmationBubble
+                    message={
+                        <>Card <strong>{movedCardTitle}</strong> moved successfully!</>
+                    }
+                />
+            )}
             {showDeletedConfirmation && (
                 <ConfirmationBubble message="Task already deleted" onClose={() => setShowDeletedConfirmation(false)} />
             )}
